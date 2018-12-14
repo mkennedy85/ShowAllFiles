@@ -21,7 +21,7 @@ showFileState=$(defaults read com.apple.finder AppleShowAllFiles 2> /dev/null)
 if [ "$1" == "hideFiles" ]; then
 	/usr/bin/defaults write com.apple.finder AppleShowAllFiles -boolean false
 	/usr/bin/killall Finder
-else
+elif [ "$1" == "showFiles" ]; then
 	/usr/bin/defaults write com.apple.finder AppleShowAllFiles -boolean true
 	/usr/bin/killall Finder
 fi
@@ -35,9 +35,9 @@ else
 fi
 echo "---"
 if [ "$showFileState" == "1" ]; then
-	echo "Hide all files | bash='$0' param1=hideFiles"
+	echo "Hide all files | bash='$0' param1=hideFiles terminal=false refresh=true"
 else
-	echo "Show all files | bash='$0' param1=showFiles"
+	echo "Show all files | bash='$0' param1=showFiles terminal=false refresh=true"
 fi
 
 
